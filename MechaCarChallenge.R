@@ -24,3 +24,17 @@ total_summary <- suspension_table %>% summarize(Mean = mean(PSI), Median = media
 
 # Step 4 creating a lot summary. Groupby lot and summarize
 lot_summary <- suspension_table %>% group_by(Manufacturing_Lot) %>% summarize(Mean = mean(PSI), Median = median(PSI), Variance = var(PSI), SD = sd(PSI), .groups = 'keep')
+
+
+# Deliverable 3
+# Step 1
+?t.test
+t.test(log10(suspension_table$PSI), mu=1500)
+
+# Step 2
+# T.test for Lot 1
+t.test(log10(lot_summary$Mean), subset=1, mu=1500)
+# T.test for Lot 2
+t.test(log10(lot_summary$Mean), subset=2, mu=1500)
+# T.test for Lot 3
+t.test(log10(lot_summary$Mean), subset=-3, mu=1500)
